@@ -1,0 +1,55 @@
+name: smart_tyre_pulse
+description: A Flutter app for managing tyre details and dumper information.
+
+publish_to: 'none' # Remove this line if you plan to publish your app.
+
+environment:
+  sdk: ">=2.19.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_bloc:
+
+  equatable:
+  provider:
+  animate_do:
+  google_fonts:
+  flutter_svg:
+  get_it:
+  cached_network_image:
+  dio:
+  shared_preferences:
+  image_picker:
+  cloud_firestore:
+  firebase_core:
+  pdf:
+  path_provider:
+  firebase_analytics:
+  permission_handler:
+  firebase_storage:
+  intl:
+  firebase_auth:
+
+
+  csv:
+
+dev_dependencies:
+  flutter_launcher_icons:
+  flutter_test:
+    sdk: flutter
+  flutter_lints:
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/icon.jpg" # Your app icon image path
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/images/dumper_1.png
+    - assets/images/dumper_2.png
+    - assets/images/dumper_3.png
+    - assets/images/dumper_4.png

@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "258688387638",
+    "firebase_url": "https://pressure-monitoring-b592a-default-rtdb.firebaseio.com",
+    "project_id": "pressure-monitoring-b592a",
+    "storage_bucket": "pressure-monitoring-b592a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:258688387638:android:e9540675ac5ed066002697",
+        "android_client_info": {
+          "package_name": "com.example.smartyrepulse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCt3TlwaueV2YW4GI3oyOyawwF9NEQZQ8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
