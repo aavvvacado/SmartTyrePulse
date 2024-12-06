@@ -21,12 +21,12 @@ class _TyreListPageState extends State<TyreListPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Dumper ${widget.dumperName}'),
-        backgroundColor: Colors.deepPurpleAccent,
+        backgroundColor: Colors.yellowAccent,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: FutureBuilder<List<Tyre>>(
-          future: tyreRepository.getTyres(),
+        child: StreamBuilder<List<Tyre>>(
+          stream: tyreRepository.tyreStream, // Use the tyre stream here
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());
@@ -47,8 +47,7 @@ class _TyreListPageState extends State<TyreListPage> {
                   width: double.infinity,
                   padding: EdgeInsets.symmetric(vertical: 10),
                   decoration: BoxDecoration(
-                    border:
-                        Border.all(color: Colors.deepPurpleAccent, width: 2),
+                    border: Border.all(color: Colors.black, width: 2),
                     borderRadius: BorderRadius.circular(8),
                     color: Colors.white,
                     boxShadow: [
@@ -86,10 +85,8 @@ class _TyreListPageState extends State<TyreListPage> {
                           ),
                         );
                       }).toList(),
-                      // Ensure the dropdown is large enough to fit the content
                       isDense: false,
                       dropdownColor: Colors.white,
-                      // This will ensure that the dropdown fits properly
                       itemHeight: 60.0,
                     ),
                   ),

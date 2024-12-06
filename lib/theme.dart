@@ -6,8 +6,8 @@ ThemeData appTheme() {
     scaffoldBackgroundColor:
         Color(0xFFF6F5F5), // Dark background for a serious tone
     appBarTheme: AppBarTheme(
-      backgroundColor: Color(0xFF6522BF), // Matches the primary color
-      foregroundColor: Colors.white, // White text/icons for contrast
+      backgroundColor: Color(0xFFFDE700), // Matches the primary color
+      foregroundColor: Colors.black, // White text/icons for contrast
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(

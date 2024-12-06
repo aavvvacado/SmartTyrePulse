@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'dumper_list.dart'; // Import your DumperListScreen class
 import 'dumper_list1.dart';
@@ -185,9 +186,13 @@ class MainContent extends StatelessWidget {
                   },
                 ),
                 CustomCard(
-                  label: 'Maintenance Record',
-                  icon: Icons.build,
-                  onPressed: () {},
+                  label: 'Tkph Calculator',
+                  icon: Icons.calculate,
+                  onPressed: () {
+                    const link = "https://tkph-calculator-1.onrender.com/";
+                    launchUrl(Uri.parse(link),
+                        mode: LaunchMode.externalApplication);
+                  },
                 ),
                 CustomCard(
                   label: 'Tyre Analysis',
@@ -259,27 +264,21 @@ class CustomCard extends StatelessWidget {
           width: width,
           height: height,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            gradient: LinearGradient(
-              colors: [Colors.blueAccent, Colors.blue[800]!],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
+              borderRadius: BorderRadius.circular(15), color: Colors.yellow),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
                 icon,
                 size: 50,
-                color: Colors.white,
+                color: Colors.black,
               ),
               SizedBox(height: 10),
               Text(
                 label,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),

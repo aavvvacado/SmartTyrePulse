@@ -145,6 +145,7 @@ class _InventoryScreenState extends State<InventoryScreen> {
   void _openForm({DocumentSnapshot? document}) {
     if (document != null) {
       tyreIdController.text = document['tyreId'];
+
       nameController.text = document['name'];
       manufacturerController.text = document['manufacturer'];
       dealerNameController.text = document['dealerName'];

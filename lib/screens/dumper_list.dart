@@ -21,12 +21,12 @@ class _DumperListScreenState extends State<DumperListScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Select Your Dumper'),
-        backgroundColor: Colors.deepPurpleAccent,
+        backgroundColor: Colors.yellowAccent,
         actions: [
           IconButton(
             icon: Icon(
               Icons.notifications,
-              color: Colors.yellow,
+              color: Colors.blue,
             ),
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -146,8 +146,8 @@ class _DumperListScreenState extends State<DumperListScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showAddDumperDialog(context),
-        backgroundColor: Colors.deepPurpleAccent,
-        child: Icon(Icons.add, color: Colors.white),
+        backgroundColor: Colors.yellowAccent,
+        child: Icon(Icons.add, color: Colors.black),
       ),
     );
   }

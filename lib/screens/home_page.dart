@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:smart_tyre_pulse/screens/screen_1.dart';
 
 void main() async {
@@ -34,12 +35,27 @@ class _HomePageState extends State<HomePage> {
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
 
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => Center(
+        child: Lottie.asset(
+          'assets/images/ok.json',
+          width: 200,
+          height: 200,
+          repeat: true,
+        ),
+      ),
+    );
+
     try {
       final snapshot = await FirebaseFirestore.instance
           .collection('login')
           .where('username', isEqualTo: email)
           .where('password', isEqualTo: password)
           .get();
+
+      Navigator.of(context).pop(); // Close the loader dialog
 
       if (snapshot.docs.isNotEmpty) {
         Navigator.pushReplacement(
@@ -50,6 +66,7 @@ class _HomePageState extends State<HomePage> {
         showErrorDialog("Invalid username or password.");
       }
     } catch (e) {
+      Navigator.of(context).pop(); // Close the loader dialog
       showErrorDialog("An error occurred. Please try again.");
     }
   }
@@ -86,7 +103,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: Text("OK", style: TextStyle(color: Colors.blue)),
+            child: Text("OK", style: TextStyle(color: Colors.yellow)),
           ),
         ],
       ),
@@ -97,28 +114,19 @@ class _HomePageState extends State<HomePage> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: Colors.black, // Set dialog background to black
+        backgroundColor: Colors.black,
         title: Row(
           children: [
-            Icon(Icons.check_circle, color: Colors.green), // Success icon
-            SizedBox(width: 10), // Space between icon and text
-            Text(
-              "Success",
-              style: TextStyle(color: Colors.white), // Title text color
-            ),
+            Icon(Icons.check_circle, color: Colors.yellow),
+            SizedBox(width: 10),
+            Text("Success", style: TextStyle(color: Colors.white)),
           ],
         ),
-        content: Text(
-          message,
-          style: TextStyle(color: Colors.white), // Content text color
-        ),
+        content: Text(message, style: TextStyle(color: Colors.white)),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: Text(
-              "OK",
-              style: TextStyle(color: Colors.green), // OK button text color
-            ),
+            child: Text("OK", style: TextStyle(color: Colors.yellow)),
           ),
         ],
       ),
@@ -133,10 +141,10 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: <Widget>[
             Container(
-              height: 300,
+              height: 320,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/background.png'),
+                  image: AssetImage('assets/images/bg1.jpg'),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -148,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromRGBO(143, 148, 251, 1),
+                  color: Colors.yellow[800],
                 ),
               ),
             ),
@@ -165,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
-                            color: Color.fromRGBO(143, 148, 251, 0.3),
+                            color: Colors.yellow.withOpacity(0.3),
                             blurRadius: 20.0,
                             offset: Offset(0, 10),
                           ),
@@ -225,11 +233,11 @@ class _HomePageState extends State<HomePage> {
       style: TextStyle(color: Colors.black),
       decoration: InputDecoration(
         filled: true,
-        fillColor: Colors.lightBlue[50],
+        fillColor: Colors.yellow[50],
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        prefixIcon: Icon(icon, color: Color.fromRGBO(143, 148, 251, 1)),
+        prefixIcon: Icon(icon, color: Colors.yellow[800]),
         hintText: hintText,
         hintStyle: TextStyle(color: Colors.grey[900]),
       ),
@@ -243,15 +251,15 @@ class _HomePageState extends State<HomePage> {
         borderRadius: BorderRadius.circular(10),
         gradient: LinearGradient(
           colors: [
-            Color.fromRGBO(143, 148, 251, 1),
-            Color.fromRGBO(143, 148, 251, .6),
+            Colors.yellow[800]!,
+            Colors.yellow[600]!,
           ],
         ),
       ),
       child: Center(
         child: Text(
           isLogin ? "Login" : "Register",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
     );
@@ -262,7 +270,7 @@ class _HomePageState extends State<HomePage> {
       duration: Duration(milliseconds: 2000),
       child: Text(
         "Forgot Password?",
-        style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1)),
+        style: TextStyle(color: Colors.yellow[800]),
       ),
     );
   }
@@ -276,7 +284,7 @@ class _HomePageState extends State<HomePage> {
           isLogin
               ? "Don't have an account? Register"
               : "Already have an account? Login",
-          style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1)),
+          style: TextStyle(color: Colors.yellow[800]),
         ),
       ),
     );

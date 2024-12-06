@@ -8,8 +8,8 @@ class TyreCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Tyre>>(
-      future: tyreRepository.getTyres(),
+    return StreamBuilder<List<Tyre>>(
+      stream: tyreRepository.tyreStream, // Use the updated stream here
       builder: (context, snapshot) {
         // Handle loading state
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -55,15 +55,15 @@ class TyreCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Pressure: ${tyre.pressure != null ? tyre.pressure.toStringAsFixed(2) : 'N/A'} PSI',
+                        'Pressure: ${tyre.pressure.toStringAsFixed(2)} PSI',
                         style: TextStyle(color: Colors.grey[400], fontSize: 14),
                       ),
                       Text(
-                        'Wear & Tear: ${tyre.wearTearRate != null ? tyre.wearTearRate.toStringAsFixed(2) : 'N/A'}%',
+                        'Wear & Tear: ${tyre.wearTearRate.toStringAsFixed(2)}%',
                         style: TextStyle(color: Colors.grey[400], fontSize: 14),
                       ),
                       Text(
-                        'Life Span: ${tyre.lifeSpan != null ? tyre.lifeSpan : 'N/A'} hrs',
+                        'Life Span: ${tyre.lifeSpan} hrs',
                         style: TextStyle(color: Colors.grey[400], fontSize: 14),
                       ),
                     ],
@@ -73,13 +73,13 @@ class TyreCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'TKPH: ${tyre.tkph != null ? tyre.tkph.toStringAsFixed(2) : 'N/A'}',
+                      'TKPH: ${tyre.tkph.toStringAsFixed(2)}',
                       style:
                           TextStyle(color: Colors.orangeAccent, fontSize: 12),
                     ),
                     SizedBox(height: 4),
                     Text(
-                      'Payload: ${tyre.payload != null ? tyre.payload.toStringAsFixed(2) : 'N/A'} kg',
+                      'Payload: ${tyre.payload.toStringAsFixed(2)} kg',
                       style:
                           TextStyle(color: Colors.orangeAccent, fontSize: 12),
                     ),
