@@ -50,7 +50,7 @@ class TyreCard extends StatelessWidget {
                   ),
                 ),
                 subtitle: Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
+                  padding: const EdgeInsets.only(top: 10.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -58,32 +58,12 @@ class TyreCard extends StatelessWidget {
                         'Pressure: ${tyre.pressure.toStringAsFixed(2)} PSI',
                         style: TextStyle(color: Colors.grey[400], fontSize: 14),
                       ),
-                      Text(
-                        'Wear & Tear: ${tyre.wearTearRate.toStringAsFixed(2)}%',
-                        style: TextStyle(color: Colors.grey[400], fontSize: 14),
-                      ),
-                      Text(
-                        'Life Span: ${tyre.lifeSpan} hrs',
-                        style: TextStyle(color: Colors.grey[400], fontSize: 14),
-                      ),
                     ],
                   ),
                 ),
                 trailing: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'TKPH: ${tyre.tkph.toStringAsFixed(2)}',
-                      style:
-                          TextStyle(color: Colors.orangeAccent, fontSize: 12),
-                    ),
-                    SizedBox(height: 4),
-                    Text(
-                      'Payload: ${tyre.payload.toStringAsFixed(2)} kg',
-                      style:
-                          TextStyle(color: Colors.orangeAccent, fontSize: 12),
-                    ),
-                  ],
+                  children: [],
                 ),
               ),
             );

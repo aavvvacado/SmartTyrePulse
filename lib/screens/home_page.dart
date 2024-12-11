@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
       barrierDismissible: false,
       builder: (context) => Center(
         child: Lottie.asset(
-          'assets/images/ok.json',
+          'assets/images/tyre.json',
           width: 200,
           height: 200,
           repeat: true,

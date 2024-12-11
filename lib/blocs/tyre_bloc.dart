@@ -14,10 +14,6 @@ class TyreBloc extends Bloc<TyreEvent, TyreState> {
       Tyre tyre = Tyre(
         name: 'Tyre 1',
         pressure: 32.0,
-        tkph: 200,
-        payload: 1500,
-        wearTearRate: 5,
-        lifeSpan: 5000,
         temperature: 70,
       );
 
