@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_tyre_pulse/screens/robust.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'dumper_list.dart'; // Import your DumperListScreen class
@@ -205,6 +206,18 @@ class MainContent extends StatelessWidget {
                     );
                   },
                 ),
+                CustomCard(
+                  label: 'Robust Analysis',
+                  icon: Icons.analytics_outlined,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RobustScreen(),
+                      ),
+                    );
+                  },
+                ),
               ],
             ),
           ),
@@ -220,7 +233,7 @@ class MainContent extends StatelessWidget {
   Widget _buildPageIndicators() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(3, (index) {
+      children: List.generate(4, (index) {
         return AnimatedContainer(
           duration: Duration(milliseconds: 300),
           margin: EdgeInsets.symmetric(horizontal: 4.0),

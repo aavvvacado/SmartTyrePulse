@@ -19,7 +19,7 @@ class _TyreListPageState extends State<TyreListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dumper: ${widget.dumperName}'),
+        title: Text(' ${widget.dumperName}'),
         backgroundColor: Colors.yellowAccent,
       ),
       body: Padding(
@@ -42,7 +42,7 @@ class _TyreListPageState extends State<TyreListPage> {
             return Column(
               children: [
                 Text(
-                  'Pressure Monitoring',
+                  'Pressure Dashboard',
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -51,28 +51,70 @@ class _TyreListPageState extends State<TyreListPage> {
                 ),
                 SizedBox(height: 16),
                 Expanded(
-                  child: Column(
+                  child: Stack(
+                    alignment: Alignment.center,
                     children: [
-                      // First row with 2 circles
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          _buildTyreCircle(tyres[0]),
-                          _buildTyreCircle(tyres[1]),
-                        ],
+                      // Vertical Line connecting both rows (stops at second line)
+                      Positioned(
+                        top: 100, // Position starts at front tyres line
+                        child: Container(
+                          width: 8,
+                          color: Colors.black,
+                          height:
+                              200, // Height adjusted to stop at rear tyres line
+                        ),
                       ),
-                      SizedBox(height: 32),
-                      Divider(thickness: 2, color: Colors.grey),
-                      SizedBox(height: 32),
-                      // Second row with 4 circles adjusted to fit in one line
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: tyres
-                            .skip(2)
-                            .take(4)
-                            .map((tyre) =>
-                                Flexible(child: _buildTyreCircle(tyre)))
-                            .toList(),
+                      // Horizontal line for top row (front tyres)
+                      Positioned(
+                        top: 100,
+                        left: 60,
+                        right: 60,
+                        child: Container(
+                          height: 8,
+                          color: Colors.black,
+                        ),
+                      ),
+                      // Horizontal line for bottom row (rear tyres)
+                      Positioned(
+                        top: 300,
+                        left: 20,
+                        right: 20,
+                        child: Container(
+                          height: 8,
+                          color: Colors.black,
+                        ),
+                      ),
+                      // Front tyres
+                      Positioned(
+                        top: 60,
+                        left: 60,
+                        child: _buildTyreCircle(tyres[0]),
+                      ),
+                      Positioned(
+                        top: 60,
+                        right: 60,
+                        child: _buildTyreCircle(tyres[1]),
+                      ),
+                      // Rear tyres
+                      Positioned(
+                        top: 260,
+                        left: 20,
+                        child: _buildTyreCircle(tyres[2]),
+                      ),
+                      Positioned(
+                        top: 260,
+                        left: 100,
+                        child: _buildTyreCircle(tyres[3]),
+                      ),
+                      Positioned(
+                        top: 260,
+                        right: 100,
+                        child: _buildTyreCircle(tyres[4]),
+                      ),
+                      Positioned(
+                        top: 260,
+                        right: 20,
+                        child: _buildTyreCircle(tyres[5]),
                       ),
                     ],
                   ),
@@ -118,7 +160,7 @@ class _TyreListPageState extends State<TyreListPage> {
             Text(
               '${tyre.pressure} hPa',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 9,
                 color: Colors.white,
               ),
             ),
@@ -136,9 +178,9 @@ class _TyreListPageState extends State<TyreListPage> {
   }
 
   Color _getStatusColor(Tyre tyre) {
-    if (tyre.pressure > 100 || tyre.temperature > 50) {
+    if (tyre.pressure < 948 || tyre.pressure > 952.5 || tyre.temperature > 40) {
       return Colors.red;
-    } else if (tyre.pressure > 80 || tyre.temperature > 40) {
+    } else if (tyre.pressure > 952) {
       return Colors.yellow;
     } else {
       return Colors.green;
