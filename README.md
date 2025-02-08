@@ -10,7 +10,6 @@ A performance analysis and monitoring application for tyres, built using Flutter
   - [Prerequisites](#prerequisites)
   - [Steps to Install](#steps-to-install)
 - [Usage](#usage)
-- [Configuration](#configuration)
 - [Limitations & Future Scope](#limitations--future-scope)
   - [Current Limitations](#current-limitations)
   - [Future Enhancements](#future-enhancements)
@@ -66,11 +65,6 @@ A performance analysis and monitoring application for tyres, built using Flutter
 - View inventory records and cost analysis.
 - Receive alerts for tyre maintenance and failures.
 
-## Configuration
-Modify `lib/config.dart` or `.env` to set Firebase credentials:
-```dart
-const String FIREBASE_API_KEY = "your_api_key_here";
-```
 
 ## Limitations & Future Scope
 
